@@ -1,10 +1,10 @@
 {
-    "last_updated": "2023-06-20T14:30:00Z",
+    "last_updated": "2023-06-21T09:15:00Z",  // Diupdate ke tanggal baru
     "berita": [
         {
             "id": 1,
             "judul": "Harga BBM Naik Mulai Besok Pagi",
-            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi. Kenaikan ini dikarenakan harga minyak mentah dunia yang terus meningkat.",
+            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi.",
             "gambar_url": "https://images.unsplash.com/photo-1606584461330-9d5f8a1a33e7?w=600&auto=format&fit=crop",
             "tanggal": "20 Juni 2023 - 14:30 WIB",
             "kategori": "Ekonomi"
@@ -32,6 +32,31 @@
             "gambar_url": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&auto=format&fit=crop",
             "tanggal": "19 Juni 2023 - 18:45 WIB",
             "kategori": "Kuliner"
+        },
+        // Berita baru ditambahin di bawah ini 👇
+        {
+            "id": 5,
+            "judul": "Gadget Terbaru Rilis dengan Fitur AI Canggih",
+            "ringkasan": "Perusahaan teknologi ternama meluncurkan gadget terbaru dengan fitur AI yang bisa memprediksi kebiasaan pengguna.",
+            "gambar_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop",
+            "tanggal": "21 Juni 2023 - 08:00 WIB",
+            "kategori": "Teknologi"
+        },
+        {
+            "id": 6,
+            "judul": "Pemerintah Siapkan Subsidi Listrik untuk UMKM",
+            "ringkasan": "Subsidi listrik tambahan akan diberikan kepada pelaku UMKM untuk mengurangi beban operasional.",
+            "gambar_url": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&auto=format&fit=crop",
+            "tanggal": "21 Juni 2023 - 07:30 WIB",
+            "kategori": "Ekonomi"
+        },
+        {
+            "id": 7,
+            "judul": "Konser Band Internasional Dikonfirmasi Akan Digelar di Jakarta",
+            "ringkasan": "Band legendaris dunia akhirnya mengumumkan jadwal konser mereka di Jakarta pada akhir tahun ini.",
+            "gambar_url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop",
+            "tanggal": "20 Juni 2023 - 21:45 WIB",
+            "kategori": "Hiburan"
         }
     ]
-}
+        }
