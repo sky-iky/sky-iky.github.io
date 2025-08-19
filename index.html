@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Berita Hari Ini</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .berita {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .judul {
+            color: #0066cc;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .gambar {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .tanggal {
+            color: #666;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Berita Terkini</h1>
+    <div id="daftar-berita">
+        <div class="loading">Memuat berita...</div>
+    </div>
+
+    <script>
+        // Fungsi untuk memuat data dari news.json
+        async function muatBerita() {
+            try {
+                const response = await fetch('news.json');
+                if (!response.ok) {
+                    throw new Error('Gagal memuat data');
+                }
+                const newsData = await response.json();
+                tampilkanBerita(newsData);
+            } catch (error) {
+                document.getElementById('daftar-berita').innerHTML = 
+                    '<div class="error">Gagal memuat berita: ' + error.message + '</div>';
+            }
+        }
+
+        // Fungsi untuk menampilkan berita
+        function tampilkanBerita(newsData) {
+            const container = document.getElementById('daftar-berita');
+            container.innerHTML = ''; // Kosongkan container
+            
+            newsData.berita.forEach(berita => {
+                const artikel = document.createElement('div');
+                artikel.className = 'berita';
+                
+                artikel.innerHTML = `
+                    <h2 class="judul">${berita.judul}</h2>
+                    <div class="tanggal">${berita.tanggal} | ${berita.kategori}</div>
+                    <img class="gambar" src="${berita.gambar_url}" alt="${berita.judul}">
+                    <p>${berita.ringkasan}</p>
+                `;
+                
+                container.appendChild(artikel);
+            });
+        }
+
+        // Panggil fungsi saat halaman dimuat
+        window.onload = muatBerita;
+    </script>
+</body>
+</html>

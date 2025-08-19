@@ -1,0 +1,28 @@
+{
+    "berita": [
+        {
+            "id": 1,
+            "judul": "Harga BBM Naik Mulai Besok",
+            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai 1 Juni 2023.",
+            "gambar_url": "https://via.placeholder.com/600x400?text=BBM+Naik",
+            "tanggal": "2023-05-31",
+            "kategori": "Ekonomi"
+        },
+        {
+            "id": 2,
+            "judul": "Timnas U-20 Kalah di Pertandingan Persahabatan",
+            "ringkasan": "Timnas Indonesia U-20 kalah 1-2 dari tim Uruguay dalam pertandingan persahabatan di Stadion Gelora Bung Karno.",
+            "gambar_url": "https://via.placeholder.com/600x400?text=Timnas+U-20",
+            "tanggal": "2023-05-30",
+            "kategori": "Olahraga"
+        },
+        {
+            "id": 3,
+            "judul": "Aplikasi Baru Permudah Pembayaran Transportasi",
+            "ringkasan": "Startup lokal meluncurkan aplikasi baru yang mengintegrasikan semua metode pembayaran transportasi dalam satu platform.",
+            "gambar_url": "https://via.placeholder.com/600x400?text=Aplikasi+Transportasi",
+            "tanggal": "2023-05-29",
+            "kategori": "Teknologi"
+        }
+    ]
+}
