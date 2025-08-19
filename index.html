@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Berita Terkini</title>
+    <title>Portal Berita Real-time</title>
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --new-badge: #e74c3c;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -18,12 +23,25 @@
             padding: 20px;
         }
         header {
-            background-color: #2c3e50;
+            background-color: var(--primary);
             color: white;
             padding: 1rem 0;
             text-align: center;
             margin-bottom: 20px;
             border-radius: 5px;
+            position: relative;
+        }
+        .refresh-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
         }
         .news-container {
             max-width: 1200px;
@@ -35,14 +53,32 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .berita.baru {
+            border-left: 4px solid var(--new-badge);
+        }
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--new-badge);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7em;
+            font-weight: bold;
         }
         .judul {
-            color: #2c3e50;
+            color: var(--primary);
             margin-bottom: 10px;
         }
         .gambar {
             width: 100%;
             height: auto;
+            max-height: 300px;
+            object-fit: cover;
             border-radius: 5px;
             margin: 10px 0;
         }
@@ -53,7 +89,7 @@
         }
         .kategori {
             display: inline-block;
-            background: #3498db;
+            background: var(--secondary);
             color: white;
             padding: 3px 8px;
             border-radius: 3px;
@@ -66,17 +102,36 @@
             font-size: 1.2em;
         }
         .error {
-            color: #e74c3c;
+            color: var(--new-badge);
             text-align: center;
             padding: 30px;
             font-size: 1.2em;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Portal Berita Terkini</h1>
-        <p>Update terbaru seputar berita hari ini</p>
+        <h1>Portal Berita Real-time</h1>
+        <p>Update otomatis setiap 30 detik</p>
+        <button class="refresh-btn" onclick="muatBerita(true)">⟳ Refresh</button>
     </header>
     
     <div class="news-container">
@@ -85,27 +140,77 @@
         </div>
     </div>
 
+    <div class="notification" id="notifikasi"></div>
+
     <script>
+        // Variabel global untuk menyimpan data terakhir
+        let lastNewsData = null;
+        let lastUpdateTime = null;
+        
         // Fungsi untuk memuat data dari news.json dengan cache busting
-        async function muatBerita() {
+        async function muatBerita(forceRefresh = false) {
             try {
+                const container = document.getElementById('daftar-berita');
+                container.innerHTML = '<div class="loading">Memuat berita terbaru...</div>';
+                
                 // Tambahkan timestamp untuk menghindari cache
-                const timestamp = new Date().getTime();
+                const timestamp = forceRefresh ? new Date().getTime() : '';
                 const response = await fetch(`news.json?t=${timestamp}`);
                 
                 if (!response.ok) throw new Error('Gagal memuat data');
                 
                 const newsData = await response.json();
-                tampilkanBerita(newsData);
+                
+                // Periksa apakah ada update
+                const hasUpdates = checkForUpdates(newsData);
+                
+                // Simpan data terakhir
+                lastNewsData = newsData;
+                lastUpdateTime = new Date();
+                
+                tampilkanBerita(newsData, hasUpdates);
+                
+                if (hasUpdates) {
+                    showNotification('Berita terbaru telah tersedia!');
+                }
             } catch (error) {
                 document.getElementById('daftar-berita').innerHTML = 
                     `<div class="error">Error: ${error.message}</div>`;
                 console.error('Error:', error);
             }
         }
-
+        
+        // Fungsi untuk memeriksa update
+        function checkForUpdates(newData) {
+            if (!lastNewsData) return false;
+            
+            // Bandingkan jumlah berita
+            if (newData.berita.length !== lastNewsData.berita.length) {
+                return true;
+            }
+            
+            // Bandingkan timestamp terakhir
+            if (newData.last_updated && lastNewsData.last_updated) {
+                return newData.last_updated > lastNewsData.last_updated;
+            }
+            
+            // Bandingkan isi berita
+            return JSON.stringify(newData) !== JSON.stringify(lastNewsData);
+        }
+        
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification(message) {
+            const notif = document.getElementById('notifikasi');
+            notif.textContent = message;
+            notif.classList.add('show');
+            
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 3000);
+        }
+        
         // Fungsi untuk menampilkan berita
-        function tampilkanBerita(newsData) {
+        function tampilkanBerita(newsData, isNewUpdate = false) {
             const container = document.getElementById('daftar-berita');
             container.innerHTML = '';
             
@@ -114,24 +219,42 @@
                 return;
             }
             
-            newsData.berita.forEach(berita => {
+            newsData.berita.forEach((berita, index) => {
                 const artikel = document.createElement('div');
                 artikel.className = 'berita';
                 
+                // Tandai sebagai baru jika update terakhir dan berita pertama
+                if (isNewUpdate && index === 0) {
+                    artikel.classList.add('baru');
+                }
+                
                 artikel.innerHTML = `
+                    ${isNewUpdate && index === 0 ? '<span class="new-badge">BARU</span>' : ''}
                     <span class="kategori">${berita.kategori}</span>
                     <h2 class="judul">${berita.judul}</h2>
                     <div class="tanggal">${berita.tanggal}</div>
-                    <img class="gambar" src="${berita.gambar_url}" alt="${berita.judul}">
+                    <img class="gambar" src="${berita.gambar_url}" alt="${berita.judul}" loading="lazy">
                     <p>${berita.ringkasan}</p>
                 `;
                 
                 container.appendChild(artikel);
             });
         }
-
+        
+        // Auto-refresh setiap 30 detik
+        setInterval(() => {
+            muatBerita();
+        }, 30000);
+        
         // Panggil fungsi saat halaman dimuat
         window.onload = muatBerita;
+        
+        // Tambahkan event listener untuk refresh manual
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' && e.ctrlKey) {
+                muatBerita(true);
+            }
+        });
     </script>
 </body>
     </html>
