@@ -1,11 +1,12 @@
 {
+    "last_updated": "2023-06-15T14:30:00Z",
     "berita": [
         {
             "id": 1,
-            "judul": "Hooiiiiiiga lonte Naik yyy Besok",
-            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi. Kenaikan ini dikarenakan harga minyak mentah dunia yang terus meningkat.",
+            "judul": "Harga BBM Naik Mulai Besok",
+            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi.",
             "gambar_url": "https://images.unsplash.com/photo-1606584461330-9d5f8a1a33e7?w=600&auto=format&fit=crop",
-            "tanggal": "31 Mei 2023",
+            "tanggal": "15 Juni 2023 - 14:30 WIB",
             "kategori": "Ekonomi"
         },
         {
@@ -13,7 +14,7 @@
             "judul": "Aplikasi Baru Permudah Pembayaran Transportasi",
             "ringkasan": "Startup lokal meluncurkan aplikasi baru yang mengintegrasikan semua metode pembayaran transportasi dalam satu platform.",
             "gambar_url": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&auto=format&fit=crop",
-            "tanggal": "30 Mei 2023",
+            "tanggal": "15 Juni 2023 - 12:45 WIB",
             "kategori": "Teknologi"
         },
         {
@@ -21,7 +22,7 @@
             "judul": "Timnas U-20 Kalah di Pertandingan Persahabatan",
             "ringkasan": "Timnas Indonesia U-20 kalah 1-2 dari tim Uruguay dalam pertandingan persahabatan di Stadion Gelora Bung Karno.",
             "gambar_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&auto=format&fit=crop",
-            "tanggal": "29 Mei 2023",
+            "tanggal": "15 Juni 2023 - 10:15 WIB",
             "kategori": "Olahraga"
         }
     ]
