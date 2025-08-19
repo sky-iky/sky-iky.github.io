@@ -1,12 +1,12 @@
 {
-    "last_updated": "2023-06-15T14:30:00Z",
+    "last_updated": "2023-06-20T14:30:00Z",
     "berita": [
         {
             "id": 1,
-            "judul": "kontol BBM Naik Mulai Besok",
-            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi.",
+            "judul": "Harga BBM Naik Mulai Besok Pagi",
+            "ringkasan": "Pemerintah mengumumkan kenaikan harga BBM jenis Pertamax sebesar Rp 500 per liter mulai besok pagi. Kenaikan ini dikarenakan harga minyak mentah dunia yang terus meningkat.",
             "gambar_url": "https://images.unsplash.com/photo-1606584461330-9d5f8a1a33e7?w=600&auto=format&fit=crop",
-            "tanggal": "15 Juni 2023 - 14:30 WIB",
+            "tanggal": "20 Juni 2023 - 14:30 WIB",
             "kategori": "Ekonomi"
         },
         {
@@ -14,7 +14,7 @@
             "judul": "Aplikasi Baru Permudah Pembayaran Transportasi",
             "ringkasan": "Startup lokal meluncurkan aplikasi baru yang mengintegrasikan semua metode pembayaran transportasi dalam satu platform.",
             "gambar_url": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&auto=format&fit=crop",
-            "tanggal": "15 Juni 2023 - 12:45 WIB",
+            "tanggal": "20 Juni 2023 - 12:15 WIB",
             "kategori": "Teknologi"
         },
         {
@@ -22,8 +22,16 @@
             "judul": "Timnas U-20 Kalah di Pertandingan Persahabatan",
             "ringkasan": "Timnas Indonesia U-20 kalah 1-2 dari tim Uruguay dalam pertandingan persahabatan di Stadion Gelora Bung Karno.",
             "gambar_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&auto=format&fit=crop",
-            "tanggal": "15 Juni 2023 - 10:15 WIB",
+            "tanggal": "20 Juni 2023 - 10:00 WIB",
             "kategori": "Olahraga"
+        },
+        {
+            "id": 4,
+            "judul": "Festival Kuliner Nusantara Digelar Akhir Pekan Ini",
+            "ringkasan": "Berbagai makanan khas dari seluruh Indonesia akan dijajakan dalam festival kuliner yang digelar di Lapangan Monas akhir pekan ini.",
+            "gambar_url": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&auto=format&fit=crop",
+            "tanggal": "19 Juni 2023 - 18:45 WIB",
+            "kategori": "Kuliner"
         }
     ]
-        }
+}
